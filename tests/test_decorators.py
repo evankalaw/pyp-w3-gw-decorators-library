@@ -48,7 +48,8 @@ class DecoratorsTestCase(unittest.TestCase):
             res = my_add(1, 2)
             capture.check()  # nothing was logged
         self.assertEqual(res, 3)
-
+    
+    
     def test_count_calls(self):
         @count_calls
         def my_func():
@@ -60,7 +61,8 @@ class DecoratorsTestCase(unittest.TestCase):
         self.assertEqual(my_func.counter(), 4)
         self.assertEqual(count_calls.counters(), {'my_func': 4})
         count_calls.reset_counters()
-
+    
+    
     def test_count_calls_multi_function(self):
         @count_calls
         def my_func():
@@ -79,7 +81,8 @@ class DecoratorsTestCase(unittest.TestCase):
         self.assertEqual(count_calls.counters(),
                          {'my_func': 3, 'my_other_func': 1})
         count_calls.reset_counters()
-
+    
+    
     def test_count_calls_no_calls(self):
         @count_calls
         def my_func():
@@ -87,6 +90,7 @@ class DecoratorsTestCase(unittest.TestCase):
         self.assertEqual(my_func.counter(), 0)
         self.assertEqual(count_calls.counters(), {'my_func': 0})
         count_calls.reset_counters()
+        
 
     def test_memoized(self):
         @memoized
